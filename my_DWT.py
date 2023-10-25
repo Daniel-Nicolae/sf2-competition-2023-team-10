@@ -20,7 +20,7 @@ def DWT(X, N):
     Y[:m,:m] = DWT(Y[:m,:m], N-1)
     return Y
 
-def inverse_DWT(X, N, g1, g2):
+def inverse_DWT(X, N):
     m = X.shape[0]//2
     if N == 1: 
         Y = rowint(X[:m, :].T, g1).T + rowint2(X[m:, :].T,g2).T
@@ -37,8 +37,6 @@ def quantdwt(Y: np.ndarray, dwtstep, factors, strength):
         Yq: the quantized version of `Y`
         dwtenc: an array of shape `(3, n+1)` containing the entropies
     """
-    # your code here
-    # TODO move this outside the functions as the ratios will always be the same
 
     _, n = dwtstep.shape
     n -= 1
